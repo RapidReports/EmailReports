@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
+	gmailtoken "github.com/arctheowl/EmailReports/GmailToken"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/gmail/v1"
 )
@@ -23,7 +24,7 @@ func GetAttachmentData() string {
 	if err != nil {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}
-	client := getClient(config)
+	client := gmailtoken.GetClient(config)
 
 	srv, err := gmail.New(client)
 	if err != nil {
