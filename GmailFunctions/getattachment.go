@@ -1,4 +1,4 @@
-package getattachmentdata
+package gmailfunctions
 
 import (
 	"encoding/base64"
@@ -70,9 +70,6 @@ func GetAttachmentData() string {
 	}
 
 	attachmentID := mail.Payload.Parts[1].Body.AttachmentId
-	fmt.Println("Messages:")
-	fmt.Println("Sent to: ", mail.Payload.Headers[0].Value)
-	// /fmt.Println(attachmentID)
 
 	attachment, err := srv.Users.Messages.Attachments.Get(user, messageid, attachmentID).Do()
 	if err != nil {
