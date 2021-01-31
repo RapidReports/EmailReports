@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-
-	getattachmentdata "github.com/arctheowl/EmailReports/GetAttachmentData"
+	gfunc "github.com/arctheowl/EmailReports/GmailFunctions"
 )
 
 func main() {
-	CsvData := getattachmentdata.GetAttachmentData()
-	fmt.Println(CsvData)
+
+	gfunc.CheckMail()
+	//CsvData := gfunc.GetAttachmentData()
+	//fmt.Println(CsvData)
 }
