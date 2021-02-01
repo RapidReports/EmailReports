@@ -18,31 +18,44 @@ func CheckMail() {
 	//This section gets a list of messages that can then be serached through an index
 	srv := createclient()
 
-	mesamount, err := srv.Users.Messages.List(user).Do()
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(mesamount)
-
 	meslist, err := srv.Users.Messages.List(user).Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve labels: %v", err)
 	}
-	//if len(r.Labels) == 0 {
-	messageid := meslist.Messages[6].Id
 
-	mail, err := srv.Users.Messages.Get(user, messageid).Do()
-	if err != nil {
-		log.Fatalf("unable to get messages")
-	}
+	messageID := getID(meslist)
+	fmt.Println("You have", len(meslist.Messages), "messages in your mailbox")
+	fmt.Println(messageID[0])
+	/*
+		messageid := meslist.Messages[6].Id
 
-	fmt.Println(mail.Payload.Headers[4])
+		mail, err := srv.Users.Messages.Get(user, messageid).Do()
+		if err != nil {
+			log.Fatalf("unable to get messages")
+		}
 
+		fmt.Println(mail.Payload.Headers[1])
+	*/
 }
 
-func mailloop() {
+//This function returns a list of message ID's in an array that can then be searched through easier.
+//It needs to be provided with a gmail.listmessages but you need the message ID to get the details on a specific
+//mail, like to,from, attachments etc
+func getID(meslist *gmail.ListMessagesResponse) map[int]string {
 
+	//message := meslist.Messages[1]
+	//fmt.Println(len(meslist.Messages))
+	//fmt.Println(message.Id)
+
+	list := make(map[int]string)
+
+	for i := 0; i < len(meslist.Messages); i++ {
+		//fmt.Println(meslist.Messages[i].Id, "  ", i)
+		list[i] = meslist.Messages[i].Id
+	}
+	//fmt.Println(list)
+
+	return list
 }
 
 //This function returns a gmail.service/Client that can then be used to interact with the gmail api.
