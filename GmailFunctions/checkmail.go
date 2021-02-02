@@ -10,13 +10,14 @@ import (
 	"google.golang.org/api/gmail/v1"
 )
 
-//CheckMail - This function is to check the email account for the requirements to select the correct emails
-func CheckMail() {
+//CheckMail - This function is to check the email account for emails in the inbox
+//this function will return a map/list of the messsages in the inbox and their ID for use in the selection process
+func CheckMail() map[int]string {
 	fmt.Println("Checking the mail for the correct mail to download")
 	user := "me"
 
 	//This section gets a list of messages that can then be serached through an index
-	srv := createclient()
+	srv := Createclient()
 
 	meslist, err := srv.Users.Messages.List(user).Do()
 	if err != nil {
@@ -25,17 +26,9 @@ func CheckMail() {
 
 	messageID := getID(meslist)
 	fmt.Println("You have", len(meslist.Messages), "messages in your mailbox")
-	fmt.Println(messageID[0])
-	/*
-		messageid := meslist.Messages[6].Id
+	//fmt.Println(messageID[0])
 
-		mail, err := srv.Users.Messages.Get(user, messageid).Do()
-		if err != nil {
-			log.Fatalf("unable to get messages")
-		}
-
-		fmt.Println(mail.Payload.Headers[1])
-	*/
+	return messageID
 }
 
 //This function returns a list of message ID's in an array that can then be searched through easier.
@@ -43,23 +36,20 @@ func CheckMail() {
 //mail, like to,from, attachments etc
 func getID(meslist *gmail.ListMessagesResponse) map[int]string {
 
-	//message := meslist.Messages[1]
-	//fmt.Println(len(meslist.Messages))
-	//fmt.Println(message.Id)
-
 	list := make(map[int]string)
 
-	for i := 0; i < len(meslist.Messages); i++ {
-		//fmt.Println(meslist.Messages[i].Id, "  ", i)
+	for i := 0; i < 30; /*len(meslist.Messages)*/ i++ {
+		//this section creates the map "list" by iterating over the messages getting the
+		//message.id string and mapping it to the iteration number
 		list[i] = meslist.Messages[i].Id
 	}
-	//fmt.Println(list)
 
 	return list
 }
 
+//Createclient :
 //This function returns a gmail.service/Client that can then be used to interact with the gmail api.
-func createclient() *gmail.Service {
+func Createclient() *gmail.Service {
 	b, err := ioutil.ReadFile("credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
