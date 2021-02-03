@@ -8,6 +8,8 @@ bin-release/
 .settings/
 credentials.json
 token.json
+config.json
+*.log
 
 # Executables
 *.swf

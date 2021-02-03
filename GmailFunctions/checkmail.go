@@ -38,7 +38,7 @@ func getID(meslist *gmail.ListMessagesResponse) map[int]string {
 
 	list := make(map[int]string)
 
-	for i := 0; i < 30; /*len(meslist.Messages)*/ i++ {
+	for i := 0; i < len(meslist.Messages); i++ {
 		//this section creates the map "list" by iterating over the messages getting the
 		//message.id string and mapping it to the iteration number
 		list[i] = meslist.Messages[i].Id
