@@ -9,7 +9,8 @@ bin-release/
 credentials.json
 token.json
 config.json
-*.log
+production.log
+logs/
 
 # Executables
 *.swf

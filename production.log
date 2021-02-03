@@ -1,3 +1,0 @@
-{"level":"info","ts":1612370659.6500316,"caller":"EmailReports/main.go:60","msg":"failed to fetch URL","url":"url","attempt":3,"backoff":1}
-{"level":"info","ts":1612370696.1085455,"caller":"EmailReports/main.go:60","msg":"failed to fetch URL","url":"url","attempt":3,"backoff":1}
-{"level":"info","ts":1612371213.3402672,"caller":"EmailReports/main.go:27","msg":"Starting ServerCategory 1yes"}
