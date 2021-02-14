@@ -53,8 +53,8 @@ func LoadConfiguration(file string) Config {
 func createLogger() *zap.SugaredLogger {
 
 	config := zap.NewProductionConfig()
-	config.OutputPaths = []string{"./production.log"}
-	config.ErrorOutputPaths = []string{"./production_err.log"}
+	config.OutputPaths = []string{"./logs/production.log"}
+	config.ErrorOutputPaths = []string{"./logs/production_err.log"}
 
 	logger, _ := config.Build()
 	Sugar := logger.Sugar()

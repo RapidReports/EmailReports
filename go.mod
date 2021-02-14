@@ -4,7 +4,6 @@ go 1.15
 
 require (
 	cloud.google.com/go v0.75.0 // indirect
-	github.com/chalvern/sugar v0.2.0 // indirect
 	go.opencensus.io v0.22.6 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0
