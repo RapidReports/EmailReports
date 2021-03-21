@@ -47,7 +47,7 @@ func mailinfo(m map[int]string, client *gmail.Service) []Mail {
 	selectedmail := []Mail{}
 
 	for i := 0; i < len(m); i++ {
-		//fmt.Println(m[i])
+		fmt.Println(m[i])
 		messageinfo, err := client.Users.Messages.Get("me", m[i]).Do()
 		if err != nil {
 			fmt.Println(err)
@@ -55,7 +55,7 @@ func mailinfo(m map[int]string, client *gmail.Service) []Mail {
 		//fmt.Println(messageinfo.Payload.Headers[7])
 		from := fromheader(messageinfo.Payload.Headers)
 
-		if messageinfo.Payload.Headers[from].Value == "Liam Devlin <lidevlin95@gmail.com>" {
+		if messageinfo.Payload.Headers[from].Value == "rose burrell <roseburrell@hotmail.co.uk> " {
 			selectedmail = append(selectedmail, Mail{MessageID: messageinfo.Id, From: messageinfo.Payload.Headers[from].Value})
 		}
 

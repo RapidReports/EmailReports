@@ -1,17 +1,15 @@
-module github.com/arctheowl/EmailReports
+module github.com/RapidReports/EmailReports
 
 go 1.15
 
 require (
-	cloud.google.com/go v0.75.0 // indirect
-	go.opencensus.io v0.22.6 // indirect
+	github.com/arctheowl/EmailReports v0.0.0-20210214194016-345f94a7ceb0
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0
-	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
-	golang.org/x/oauth2 v0.0.0-20210126194326-f9ce19ea3013
-	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
+	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
+	golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84
+	golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 // indirect
 	golang.org/x/text v0.3.5 // indirect
-	google.golang.org/api v0.38.0
-	google.golang.org/genproto v0.0.0-20210126160654-44e461bb6506 // indirect
-	google.golang.org/grpc v1.35.0 // indirect
+	google.golang.org/api v0.42.0
+	google.golang.org/genproto v0.0.0-20210319143718-93e7006c17a6 // indirect
 )

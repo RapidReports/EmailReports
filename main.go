@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	gfunc "github.com/arctheowl/EmailReports/GmailFunctions"
+	gfunc "github.com/RapidReports/EmailReports/GmailFunctions"
 	"go.uber.org/zap"
 )
 
@@ -22,18 +22,20 @@ type Config struct {
 }
 
 func main() {
-	for {
+
+	/*
 		logger := createLogger()
 		logger.Info("Starting Server",
 			"Category 1", "yes",
 		)
-		//config := LoadConfiguration("config.json")
-		mail := gfunc.SelectMail()
-		CsvData := gfunc.GetAttachmentData(mail)
-		fmt.Println(CsvData)
+	*/
+	//config := LoadConfiguration("config.json")
+	mail := gfunc.SelectMail()
+	CsvData := gfunc.GetAttachmentData(mail)
+	fmt.Println(CsvData)
 
-		time.Sleep(30 * time.Second)
-	}
+	time.Sleep(30 * time.Second)
+
 }
 
 //LoadConfiguration - will load config.json file from this folder to define the Config struct
