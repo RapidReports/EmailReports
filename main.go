@@ -22,20 +22,20 @@ type Config struct {
 }
 
 func main() {
+	for {
+		/*
+			logger := createLogger()
+			logger.Info("Starting Server",
+				"Category 1", "yes",
+			)
+		*/
+		//config := LoadConfiguration("config.json")
+		mail := gfunc.SelectMail()
+		CsvData := gfunc.GetAttachmentData(mail)
+		fmt.Println(CsvData)
 
-	/*
-		logger := createLogger()
-		logger.Info("Starting Server",
-			"Category 1", "yes",
-		)
-	*/
-	//config := LoadConfiguration("config.json")
-	mail := gfunc.SelectMail()
-	CsvData := gfunc.GetAttachmentData(mail)
-	fmt.Println(CsvData)
-
-	time.Sleep(30 * time.Second)
-
+		time.Sleep(30 * time.Second)
+	}
 }
 
 //LoadConfiguration - will load config.json file from this folder to define the Config struct

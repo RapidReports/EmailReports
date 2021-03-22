@@ -21,7 +21,7 @@ func SelectMail() []Mail {
 
 	fmt.Println("Selecting the mail that this program will run on...")
 	mail := CheckMail()
-	fmt.Println(mail[0])
+	//fmt.Println(mail[0])
 
 	client := Createclient()
 
@@ -47,7 +47,7 @@ func mailinfo(m map[int]string, client *gmail.Service) []Mail {
 	selectedmail := []Mail{}
 
 	for i := 0; i < len(m); i++ {
-		fmt.Println(m[i])
+		//fmt.Println(m[i])
 		messageinfo, err := client.Users.Messages.Get("me", m[i]).Do()
 		if err != nil {
 			fmt.Println(err)
